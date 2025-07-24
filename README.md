@@ -1,15 +1,15 @@
-# test-task-backend
+# Test task for company 'Digital Solutions'
 
-To install dependencies:
+# How using?
 
 ```bash
+git clone git@github.com:RestlessByte/Digital-Solutions-TEST-TASK.git\
+cd Digital-Solutions-TEST-TASK
 bun install
 ```
 
-To run:
-
+# How enable backend?
 ```bash
-bun run index.ts
+cd Digital-Solutions-TEST-TASK
+sh run-back.sh
 ```
-
-This project was created using `bun init` in bun v1.2.2. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
