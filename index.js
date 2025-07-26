@@ -27,7 +27,7 @@ function init() {
 
   // Сброс
   resetButton.addEventListener('click', () => {
-    fetch('http://84.39.243.205:1333/api/state', {
+    fetch('http://localhost:1333/api/state', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ order: Array.from({ length: 1000000 }, (_, i) => i + 1), selected: [] })
@@ -55,14 +55,14 @@ function resetList() {
 }
 
 async function loadState() {
-  const response = await fetch('http://84.39.243.205:1333/api/state');
+  const response = await fetch('http://localhost:1333/api/state');
   const state = await response.json();
   selectedItems = new Set(state.selected);
   updateSelectionCount();
 }
 
 async function saveState() {
-  await fetch('http://84.39.243.205:1333/api/state', {
+  await fetch('http://localhost:1333/api/state', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -83,7 +83,7 @@ function loadItems() {
     search: currentSearch
   });
 
-  fetch(`http://84.39.243.205:1333/api/items?${params}`)
+  fetch(`http://localhost:1333/api/items?${params}`)
     .then(res => res.json())
     .then(data => {
       items = [...items, ...data.items];
@@ -175,7 +175,7 @@ function initDragAndDrop() {
     const newOrder = Array.from(listElement.children)
       .map(el => parseInt(el.dataset.id));
 
-    fetch('http://84.39.243.205:1333/api/state', {
+    fetch('http://localhost:1333/api/state', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ order: newOrder })
